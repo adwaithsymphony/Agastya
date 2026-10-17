@@ -1,0 +1,30 @@
+[
+ {
+  "file": "tomato_early_blight_0.jpg",
+  "source": "PlantVillage raw/color/Tomato___Early_blight/93dd10f7-791e-4c52-a8d0-f9196cafaecb___RS_Erly.B 8284.JPG"
+ },
+ {
+  "file": "tomato_early_blight_1.jpg",
+  "source": "PlantVillage raw/color/Tomato___Early_blight/a24d6927-cb21-4d9b-acc1-780ef36cbbf8___RS_Erly.B 7671.JPG"
+ },
+ {
+  "file": "tomato_healthy_0.jpg",
+  "source": "PlantVillage raw/color/Tomato___healthy/502bbd0a-8c84-4723-8e16-446655d5563d___RS_HL 0423.JPG"
+ },
+ {
+  "file": "tomato_late_blight_0.jpg",
+  "source": "PlantVillage raw/color/Tomato___Late_blight/97e49ab1-3159-4659-9954-518c94690a9e___RS_Late.B 5534.JPG"
+ },
+ {
+  "file": "pepper_bacterial_spot_0.jpg",
+  "source": "PlantVillage raw/color/Pepper,_bell___Bacterial_spot/d966525e-821a-4d1b-a4e5-6bb5b7224cee___NREC_B.Spot 1884.JPG"
+ },
+ {
+  "file": "pepper_healthy_0.jpg",
+  "source": "PlantVillage raw/color/Pepper,_bell___healthy/d4b0bcdd-7d56-4a4c-99f1-a4383bdda089___JR_HL 7557.JPG"
+ },
+ {
+  "file": "tomato_septoria_leaf_spot_0.jpg",
+  "source": "PlantVillage raw/color/Tomato___Septoria_leaf_spot/2b66d465-d98a-405a-9775-3b03ac58e7e5___Matt.S_CG 0757.JPG"
+ }
+]

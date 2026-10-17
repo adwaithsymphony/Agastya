@@ -1,0 +1,297 @@
+{
+  "key": "crop-vision-plantvillage",
+  "version": "1.0.0",
+  "name": "Leaf condition classifier (EfficientNet-B0 features + linear head, PlantVillage)",
+  "task": "single-leaf image classification (38 PlantVillage crop/condition classes)",
+  "framework": "onnxruntime",
+  "artifact": "model.onnx",
+  "artifact_sha256": "6e38ebd6f67316b139aaa9e3f24614e22d4c8574e340f6d711bd8bded436e2f2",
+  "input": {
+    "size": 224,
+    "layout": "NCHW",
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "resize": "centre square crop, bilinear resize to 224"
+  },
+  "classes": [
+    "Apple___Apple_scab",
+    "Apple___Black_rot",
+    "Apple___Cedar_apple_rust",
+    "Apple___healthy",
+    "Blueberry___healthy",
+    "Cherry_(including_sour)___Powdery_mildew",
+    "Cherry_(including_sour)___healthy",
+    "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot",
+    "Corn_(maize)___Common_rust_",
+    "Corn_(maize)___Northern_Leaf_Blight",
+    "Corn_(maize)___healthy",
+    "Grape___Black_rot",
+    "Grape___Esca_(Black_Measles)",
+    "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)",
+    "Grape___healthy",
+    "Orange___Haunglongbing_(Citrus_greening)",
+    "Peach___Bacterial_spot",
+    "Peach___healthy",
+    "Pepper,_bell___Bacterial_spot",
+    "Pepper,_bell___healthy",
+    "Potato___Early_blight",
+    "Potato___Late_blight",
+    "Potato___healthy",
+    "Raspberry___healthy",
+    "Soybean___healthy",
+    "Squash___Powdery_mildew",
+    "Strawberry___Leaf_scorch",
+    "Strawberry___healthy",
+    "Tomato___Bacterial_spot",
+    "Tomato___Early_blight",
+    "Tomato___Late_blight",
+    "Tomato___Leaf_Mold",
+    "Tomato___Septoria_leaf_spot",
+    "Tomato___Spider_mites Two-spotted_spider_mite",
+    "Tomato___Target_Spot",
+    "Tomato___Tomato_Yellow_Leaf_Curl_Virus",
+    "Tomato___Tomato_mosaic_virus",
+    "Tomato___healthy"
+  ],
+  "backbone": {
+    "architecture": "EfficientNet-B0 (ImageNet-1k pretrained, frozen)",
+    "weights": "lukemelas/EfficientNet-PyTorch release 1.0, efficientnet-b0-355c32eb.pth",
+    "license": "Apache-2.0"
+  },
+  "training_data": {
+    "dataset": "PlantVillage (spMohanty/PlantVillage-Dataset, raw/color)",
+    "license": "CC BY-SA 3.0",
+    "citation": "Mohanty, Hughes & Salath\u00e9 (2016), Frontiers in Plant Science 7:1419",
+    "images_used": 20923,
+    "max_per_class": 600,
+    "split": {
+      "train": 14646,
+      "validation": 3138,
+      "test": 3139
+    },
+    "split_method": "stratified random split by image (seed 7)"
+  },
+  "head": {
+    "type": "multinomial logistic regression on standardised features",
+    "C": 0.05
+  },
+  "metrics": {
+    "validation_accuracy": 0.9771,
+    "test_accuracy": 0.9732,
+    "test_macro_f1": 0.9734,
+    "test_ece_15_bins": 0.0205,
+    "uncertainty_threshold": 0.7,
+    "test_coverage_at_threshold": 0.9513,
+    "test_accuracy_at_or_above_threshold": 0.9893,
+    "test_accuracy_below_threshold": 0.6601,
+    "ood_guard_cosine_threshold": 0.2453,
+    "ood_guard_test_pass_rate": 0.9879,
+    "per_class": {
+      "Apple___Apple_scab": {
+        "precision": 0.9677,
+        "recall": 1.0,
+        "support": 90
+      },
+      "Apple___Black_rot": {
+        "precision": 0.9783,
+        "recall": 1.0,
+        "support": 90
+      },
+      "Apple___Cedar_apple_rust": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 41
+      },
+      "Apple___healthy": {
+        "precision": 0.9888,
+        "recall": 0.9778,
+        "support": 90
+      },
+      "Blueberry___healthy": {
+        "precision": 1.0,
+        "recall": 0.9778,
+        "support": 90
+      },
+      "Cherry_(including_sour)___Powdery_mildew": {
+        "precision": 0.978,
+        "recall": 0.9889,
+        "support": 90
+      },
+      "Cherry_(including_sour)___healthy": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 90
+      },
+      "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot": {
+        "precision": 0.8875,
+        "recall": 0.9221,
+        "support": 77
+      },
+      "Corn_(maize)___Common_rust_": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 90
+      },
+      "Corn_(maize)___Northern_Leaf_Blight": {
+        "precision": 0.9302,
+        "recall": 0.8889,
+        "support": 90
+      },
+      "Corn_(maize)___healthy": {
+        "precision": 0.989,
+        "recall": 1.0,
+        "support": 90
+      },
+      "Grape___Black_rot": {
+        "precision": 0.9886,
+        "recall": 0.9667,
+        "support": 90
+      },
+      "Grape___Esca_(Black_Measles)": {
+        "precision": 0.978,
+        "recall": 0.9889,
+        "support": 90
+      },
+      "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 90
+      },
+      "Grape___healthy": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 64
+      },
+      "Orange___Haunglongbing_(Citrus_greening)": {
+        "precision": 1.0,
+        "recall": 0.9889,
+        "support": 90
+      },
+      "Peach___Bacterial_spot": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 90
+      },
+      "Peach___healthy": {
+        "precision": 1.0,
+        "recall": 0.9815,
+        "support": 54
+      },
+      "Pepper,_bell___Bacterial_spot": {
+        "precision": 1.0,
+        "recall": 0.9778,
+        "support": 90
+      },
+      "Pepper,_bell___healthy": {
+        "precision": 0.9677,
+        "recall": 1.0,
+        "support": 90
+      },
+      "Potato___Early_blight": {
+        "precision": 0.9677,
+        "recall": 1.0,
+        "support": 90
+      },
+      "Potato___Late_blight": {
+        "precision": 0.9667,
+        "recall": 0.9667,
+        "support": 90
+      },
+      "Potato___healthy": {
+        "precision": 0.9167,
+        "recall": 0.9565,
+        "support": 23
+      },
+      "Raspberry___healthy": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 55
+      },
+      "Soybean___healthy": {
+        "precision": 0.9783,
+        "recall": 1.0,
+        "support": 90
+      },
+      "Squash___Powdery_mildew": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 90
+      },
+      "Strawberry___Leaf_scorch": {
+        "precision": 0.989,
+        "recall": 1.0,
+        "support": 90
+      },
+      "Strawberry___healthy": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "support": 69
+      },
+      "Tomato___Bacterial_spot": {
+        "precision": 0.9886,
+        "recall": 0.9667,
+        "support": 90
+      },
+      "Tomato___Early_blight": {
+        "precision": 0.9535,
+        "recall": 0.9111,
+        "support": 90
+      },
+      "Tomato___Late_blight": {
+        "precision": 0.9302,
+        "recall": 0.8889,
+        "support": 90
+      },
+      "Tomato___Leaf_Mold": {
+        "precision": 0.9667,
+        "recall": 0.9667,
+        "support": 90
+      },
+      "Tomato___Septoria_leaf_spot": {
+        "precision": 0.9405,
+        "recall": 0.8778,
+        "support": 90
+      },
+      "Tomato___Spider_mites Two-spotted_spider_mite": {
+        "precision": 0.9647,
+        "recall": 0.9111,
+        "support": 90
+      },
+      "Tomato___Target_Spot": {
+        "precision": 0.8447,
+        "recall": 0.9667,
+        "support": 90
+      },
+      "Tomato___Tomato_Yellow_Leaf_Curl_Virus": {
+        "precision": 1.0,
+        "recall": 0.9778,
+        "support": 90
+      },
+      "Tomato___Tomato_mosaic_virus": {
+        "precision": 0.9483,
+        "recall": 0.9821,
+        "support": 56
+      },
+      "Tomato___healthy": {
+        "precision": 0.9778,
+        "recall": 0.9778,
+        "support": 90
+      }
+    }
+  },
+  "limitations": [
+    "Trained and evaluated only on PlantVillage: single detached leaves photographed on plain backgrounds under controlled conditions. Accuracy on field photographs (multiple leaves, soil, shadows, other crops) is NOT established and is expected to be substantially lower.",
+    "The random image-level split may place photographs of the same leaf in both train and test sets, so the reported test accuracy is likely optimistic.",
+    "Predicts one of 38 crop/condition classes. It does not estimate disease severity, nutrient deficiency, pest species, yield impact, or recommend treatments.",
+    "Crops outside the 14 PlantVillage crops are unsupported; the application reports them as unsupported input."
+  ],
+  "evaluated_on": "2026-10-15"
+}
